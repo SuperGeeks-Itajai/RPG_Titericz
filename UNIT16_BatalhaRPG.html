@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Batalha RPG</title>
+    <link href="UNIT16_BatalhaRPG.css" rel="stylesheet" type="text/css" />
+    <script src="UNIT16_BatalhaRPG.js" defer></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  </head>
+
+<body>
+    <div class="container">
+        <h1 class="d-flex justify-content-center text-white">
+            BATALHA RPG
+        </h1>
+
+        <div class="accordion" id="accordionExample">
+            <!--Grupo dos Personagens-->
+            <div class="card border-light">
+
+              <!--Título do grupo Personagens-->
+              <div class="card-header bg-dark" id="headingOne">        
+                  <h5 class="mb-0">        
+                  <button class="btn btn-link text-white" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                      PERSONAGENS
+                  </button>       
+                  </h5>       
+              </div>
+            
+              <!--Corpo do grupo-->       
+              <div id="collapseOne" class="collapse show container" aria-labelledby="headingOne" data-parent="#accordionExample">
+                  <div class="card-body">
+                        
+                      <!--Tabela de evolução -->       
+                      <table class="table table-bordered table-dark">        
+                          <thead>        
+                              <tr>        
+                                  <th>Classe</th>        
+                                  <th>Vida</th>        
+                                  <th>Dano</th>        
+                              </tr>        
+                          </thead>        
+                          <tbody>        
+                              <tr>        
+                                  <td>Guerreiro</td>        
+                                  <td>        
+                                      <label id="GuerreiroVidaId">50</label>         
+                                      <button onclick="evoluirVida('guerreiro')" class="btn btn-warning botaoUpdate">+</button>    
+                                  </td>        
+                                  <td>        
+                                      <label id="GuerreiroDanoId">10</label>         
+                                      <button onclick="evoluirDano('guerreiro')" class="btn btn-warning botaoUpdate">+</button>        
+                                  </td>        
+                              </tr>        
+                              <tr>        
+                                  <td>Arqueiro</td>        
+                                  <td>        
+                                      <label id="ArqueiroVidaId">30</label>         
+                                      <button onclick="evoluirVida('arqueiro')" class="btn btn-warning botaoUpdate">+</button>        
+                                  </td>        
+                                  <td>        
+                                      <label id="ArqueiroDanoId">20</label>         
+                                      <button onclick="evoluirDano('arqueiro')" class="btn btn-warning botaoUpdate">+</button>        
+                                  </td>        
+                              </tr>        
+                              <tr>        
+                                  <td>Mago</td>        
+                                  <td>        
+                                      <label id="MagoVidaId">20</label>         
+                                      <button onclick="evoluirVida('mago')" class="btn btn-warning botaoUpdate">+</button>        
+                                  </td>        
+                                  <td>        
+                                      <label id="MagoDanoId">30</label>         
+                                      <button onclick="evoluirDano('mago')" class="btn btn-warning botaoUpdate">+</button>        
+                                  </td>        
+                              </tr>                                      
+                          </tbody>        
+                      </table>                    
+          
+                      <label class="text-white">Pontos de Evolução: </label>        
+                      <label id="pontosEvolucaoid" class="text-white">1</label>        
+                  </div>        
+              </div>        
+          </div>
+
+            <!--Grupo da Batalha-->
+          <div class="card">
+
+            <!--Título do Grupo Batalha-->
+            <div class="card-header bg-dark" id="cardHead">
+                <h5 class="mb-0">
+                    <button class="btn btn-link text-white" type="button" data-toggle="collapse" data-target="#batalhaCard" aria-expanded="true" aria-controls="batalhaCard">
+                        BATALHA
+                    </button>
+                </h5>
+            </div>
+
+            <!--Corpo do Card/Grupo Batalha-->
+            <div id="batalhaCard" class="collapse show container" aria-labelledby="headingOne" data-parent="#accordionExample">
+
+                <!--Selecionar grupo de inimigos-->
+
+                <form>
+                    <div class="form-group pt-3">
+                        <select class="custom-select" id="selecaoInimigosId">
+                        <option selected>Selecione seus inimigos</option>
+                        <option value="0">Orcs</option>
+                        <option value="1">Mortos-vivos</option>
+                        <option value="2">Demônios</option>
+                        </select>
+
+                        <!--Botão Iniciar Batalha-->
+                        <button type="button" class="btn btn-danger mt-2 form-control" onclick="iniciarBatalha()">
+                        INICIAR BATALHA  
+                        </button>
+                    </div>
+                </form>
+
+                <!--Tabela complexa da parte do ataque-->
+                <div class="row">
+
+                    <!--Lado do Personagem-->
+                    <div class="col-sm">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <label class="input-group-text" for="inputGroupSelect01">Personagem</label>
+                            </div>                 
+
+                            <!--Select dos personagens-->
+                            <select class="custom-select" onchange="selecionarPersonagem()" id="personagemEscolhidoId">
+                                <option selected>Selecione seu personagem...</option>
+                                <option value="0">Guerreiro</option>
+                                <option value="1">Arqueiro</option>
+                                <option value="2">Mago</option>
+                            </select>
+                        </div>             
+
+                        <!--Imagem do personagem atual-->
+
+                        <div class="d-flex justify-content-center">
+                            <img id="imagemPersonagemId" class="mt-2"/>
+                        </div>
+
+
+                        <!--Tabela dos dados do personagem atual-->
+                        <table class="table table-bordered table-dark mt-2">
+                            <tbody>
+                                <tr>
+                                    <th scope="row">Vida</th>
+                                    <td><label id="vidaPersonagemId">0</label></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Dano</th>
+                                    <td><label id="danoPersonagemId">0</label></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!--Botão Atacar-->
+                    <div class="align-self-center">
+                        <button type="button" class="btn btn-primary form-control mt-3" onclick="Atacar()">
+                            ATACAR  
+                        </button>
+                    </div>     
+
+                    <!--Lado do Inimigo-->
+                    <div class="col-sm">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <label class="input-group-text" for="inputGroupSelect01">Inimigo</label>
+                            </div>             
+
+                            <!--Select para inimigo alvo / Options gerados dinamicamente-->
+                            <select class="custom-select" id="inimigosEscolhidosId" onchange="atualizarDadosAlvo()">
+                                <option selected>Selecione seus inimigos...</option>
+                            </select>
+                        </div>     
+
+                        <!--Imagem do Inimigo Alvo-->
+                        <div class="d-flex justify-content-center">
+                            <img id="imagemInimigoId"  class="mt-2"/>
+                        </div>     
+
+                        <!--Tabela dos dados do inimigo alvo-->
+                        <table class="table table-bordered table-dark mt-2">
+                            <tbody>
+                                <tr>
+                                    <th scope="row">Vida</th>
+                                    <td><label id="vidaInimigoId">0</label></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Dano</th>
+                                    <td><label id="danoInimigoId">0</label></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>   
+                </div>
+                
+                <!--Texto de resultado do ataque-->
+                <label class="text-white">Resultado: </label> <label id="resultadoId" class="text-white"></label>
+
+                <!--Botão Saquear-->
+                <div>
+                    <button id="botaoSaquearId" onclick="Saquear()" type="button" class="btn btn-warning form-control mb-2" disabled>
+                    SAQUEAR  
+                    </button>
+                </div>
+
+            <!--Corpo do card de batalha-->    
+            </div>
+
+          <!--Card batalha-->  
+          </div>
+
+        <!--Accordion-->  
+        </div>
+
+    <!--Container centraliza tudo-->    
+    </div>
+</body>
+
+</html>
